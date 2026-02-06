@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Haven Café | Artisan Coffee in Portland</title>
+    <meta name="description"
+        content="Brew Haven Café - Your daily dose of happiness in Portland. Serving specialty coffee, fresh pastries, and light lunch in a cozy atmosphere.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Brew<span>Haven</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="tel:+15035550123" class="btn-phone"><i class="fas fa-phone"></i></a>
+                <div class="cart-icon-container" id="cart-icon-btn">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+            </div>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Basket</h3>
+            <span class="close-cart" id="close-cart">&times;</span>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items will be injected here -->
+            <div class="empty-cart-msg">Your basket is empty</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkout-btn" disabled>Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Order Success Modal -->
+    <div class="order-success-modal" id="order-success-modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Placed!</h2>
+            <p>Your delicious brew is being prepared and will be ready shortly.</p>
+            <div class="order-summary" id="modal-order-summary">
+                <!-- Summary will be injected here -->
+            </div>
+            <button class="btn btn-primary btn-block" id="close-success-modal">Awesome!</button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a href="#menu" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Brew Haven Café</h1>
+            <p class="tagline">"Your Daily Dose of Happiness"</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+                <a href="#contact" class="btn btn-outline">Visit Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        alt="Cafe Interior">
+                </div>
+                <div class="about-text">
+                    <span class="label">Our Story</span>
+                    <h2>Ethically Sourced, Family Owned</h2>
+                    <p>Since 2020, Brew Haven has been more than just a coffee shop. We're a Portland community hub
+                        dedicated to the craft of artisan coffee and the joy of shared moments.</p>
+                    <p>Our beans are ethically sourced from small-batch roasters, ensuring that every cup you drink
+                        supports sustainable farming and incredible taste.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>4.9</h3>
+                            <p>Rating</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10k+</h3>
+                            <p>Coffee Served</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu section-padding secondary-bg">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="label">Taste the Craft</span>
+                <h2>Our Favorite Brews</h2>
+            </div>
+            <div class="menu-tabs">
+                <div class="menu-tab active" data-target="coffee">Coffee</div>
+                <div class="menu-tab" data-target="pastries">Pastries</div>
+                <div class="menu-tab" data-target="lunch">Lunch</div>
+            </div>
+            <div class="menu-grid">
+                <!-- Coffee Items -->
+                <div class="menu-item coffee" data-id="1" data-name="Artisan Latte" data-price="4.50">
+                    <div class="menu-item-info">
+                        <h3>Artisan Latte</h3>
+                        <p>House blend espresso with silky steamed milk.</p>
+                        <span class="price">$4.50</span>
+                    </div>
+                    <div class="menu-item-action">
+                        <button class="add-to-cart-btn">+ Add</button>
+                    </div>
+                </div>
+                <div class="menu-item coffee" data-id="2" data-name="Cold Brew" data-price="5.00">
+                    <div class="menu-item-info">
+                        <h3>Cold Brew</h3>
+                        <p>Slow-steeped for 18 hours for maximum smoothness.</p>
+                        <span class="price">$5.00</span>
+                    </div>
+                    <div class="menu-item-action">
+                        <button class="add-to-cart-btn">+ Add</button>
+                    </div>
+                </div>
+                <!-- Pastry Items -->
+                <div class="menu-item pastries" data-id="3" data-name="Almond Croissant" data-price="3.75">
+                    <div class="menu-item-info">
+                        <h3>Almond Croissant</h3>
+                        <p>Flaky, buttery, and filled with roasted almond cream.</p>
+                        <span class="price">$3.75</span>
+                    </div>
+                    <div class="menu-item-action">
+                        <button class="add-to-cart-btn">+ Add</button>
+                    </div>
+                </div>
+                <!-- Lunch Items -->
+                <div class="menu-item lunch" data-id="4" data-name="Avocado Toast" data-price="11.00">
+                    <div class="menu-item-info">
+                        <h3>Avocado Toast</h3>
+                        <p>Sourdough with radish, chili flakes, and organic avocado.</p>
+                        <span class="price">$11.00</span>
+                    </div>
+                    <div class="menu-item-action">
+                        <button class="add-to-cart-btn">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-40">
+                <a href="#" class="btn btn-primary">Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="label">Our Offerings</span>
+                <h2>Why Choose Brew Haven?</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Premium Sourcing</h3>
+                    <p>We source only the highest quality, ethically produced beans from sustainable farms worldwide.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Fresh Daily</h3>
+                    <p>All our pastries and lunch items are prepared fresh every single morning in our local kitchen.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Cozy Workspace</h3>
+                    <p>Enjoy free high-speed Wi-Fi and plenty of power outlets in a quiet, comfortable environment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Eco-Friendly</h3>
+                    <p>We're committed to the planet, using 100% compostable cups and eco-friendly packaging.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Community Hub</h3>
+                    <p>More than just a café, we host local events, art shows, and support neighborhood initiatives.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Membership Perk</h3>
+                    <p>Join our rewards program for free drinks, exclusive birthday treats, and early access to new
+                        blends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="label">Gallery</span>
+                <h2>Sights & Flavors</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Coffee 1">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Coffee 2">
+                <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=600&q=80"
+                    alt="Pastries">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=630&q=80"
+                    alt="Cafe Vibe">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section-padding secondary-bg">
+        <div class="container">
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <div class="stars">★★★★★</div>
+                    <p>"Best coffee in Portland! The atmosphere is so cozy, I spend hours here working. The pastries are
+                        a dream."</p>
+                    <div class="client">- Michael R.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="checkout section-padding" style="display: none;">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="label">Almost Done</span>
+                <h2>Complete Your Order</h2>
+            </div>
+            <div class="checkout-grid">
+                <div class="checkout-form-container">
+                    <form id="order-form" class="order-form" method="POST" action="place_order.php">
+                        <div class="form-group">
+                            <label for="order-name">Full Name</label>
+                            <input type="text" id="order-name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="order-email">Email Address</label>
+                                <input type="email" id="order-email" name="email" placeholder="john@example.com"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="order-phone">Phone Number</label>
+                                <input type="tel" id="order-phone" name="phone" placeholder="(503) 555-0123" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-address">Delivery Address</label>
+                            <textarea id="order-address" name="address" rows="3"
+                                placeholder="123 NW 10th Ave, Portland, OR" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-notes">Special Instructions (Optional)</label>
+                            <textarea id="order-notes" name="notes" rows="2"
+                                placeholder="e.g., Leave at the door, extra napkins..."></textarea>
+                        </div>
+
+                        <!-- Hidden inputs for cart data -->
+                        <input type="hidden" name="cart_items" id="hidden-cart-items">
+                        <input type="hidden" name="cart_total" id="hidden-cart-total">
+
+                        <div class="checkout-actions">
+                            <button type="button" class="btn btn-outline" id="back-to-menu">Back to Menu</button>
+                            <button type="submit" class="btn btn-primary">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="checkout-summary-container">
+                    <div class="checkout-summary" id="checkout-summary-details">
+                        <!-- Summary injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Visit Section -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h2>Visit Us Today</h2>
+                    <p>We're located in the heart of the Pearl District. Stop by for a morning pick-me-up or a cozy
+                        afternoon work session.</p>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="form-phone" name="phone" placeholder="(503) 555-0123" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="How can we help you?"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <div id="form-success" class="form-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.34!2d-122.68!3d45.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0a!2sPearl%20District%2C%20Portland%2C%20OR!5e0!3m2!1sen!2sin!4v1700000000000"
+                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                    <div class="location-details">
+                        <h3>Our Location</h3>
+                        <ul class="contact-details">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 NW 10th Ave, Portland, OR 97209</li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+15035550123" class="tap-link">(503)
+                                    555-0123</a></li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 7am-7pm | Sun: 8am-5pm</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Brew<span>Haven</span></div>
+                <div class="footer-copy">© 2024 Brew Haven Café. Locally Brewed in Portland.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
